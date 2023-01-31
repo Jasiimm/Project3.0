@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\XSS;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,13 +86,14 @@ Route::get("/showcart/{id}",[HomeController::class, "showcart"]);
 
 Route::get("/remove/{id}", [HomeController::class, "remove"]);
 
-Route::post("/orderconfirm", [HomeController::class, "orderconfirm"]);
 
 Route::get("/orders", [AdminController::class, "orders"]);
 
-//Route::group(['middleware' => 'XSS', function(){
- //   Route::get('/pizzas', 'HomeController@index');
-//}]);
+Route::group(['middelware'=>['XSS']],function(){
+Route::post("/orderconfirm", [HomeController::class, "orderconfirm"]);
+//   Route::get('register', [HomeController::class, 'showRegistrationForm'])->name('register');
+ //   Route::post('register', [HomeController::class, 'register']);
+});
 
 Route::middleware([
     'auth:sanctum',
