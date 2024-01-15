@@ -40,7 +40,7 @@ class AdminController extends Controller
     {
 
         $data = PizzaModel::all();
-        return view("admin.pizzamenu", compact("data"));
+        return view("admin.pizzamenu", compact("data")); 
     }
 
     public function updateview($id)
@@ -73,12 +73,12 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function upload(Request $request)
+    public function upload(Request $request) 
     {
 
         $data = new PizzaModel;
 
-        $image = $request->image;
+        $image = $request->image; 
 
         $imagename = time() . '.' . $image->getClientOriginalExtension();
         $request->image->move('pizzaimage', $imagename);

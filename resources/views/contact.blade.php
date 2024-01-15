@@ -151,7 +151,7 @@
                                     </fieldset>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
-                                    <input type="number" name="guest" placeholder="Aantal Gasten">
+                                    <input type="number" name="guest" placeholder="Aantal Gasten"> 
                                 </div>
                                 <div class="col-lg-6">
                                     <div id="filterDate2">
@@ -164,7 +164,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
-                                    <input type="time" name="time">
+                                    <input type="time" name="time"> 
                                 </div>
                                 <div class="col-lg-12">
                                     <fieldset>

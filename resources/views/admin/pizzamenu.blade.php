@@ -71,7 +71,7 @@
             <td>{{$data->description}}</td>
             <td><img height="200px" width="200px" src="/pizzaimage/{{$data->image}}"></td>
             <td><a href="{{url('/deletepizza',$data->id)}}">Delete</a></td>
-            <td><a href="{{url('/updateview',$data->id)}}">Update</a></td>
+            <td><a href="{{url('/updateview',$data->id)}}">Update</a></td>  
           </tr>
           @endforeach
         </table>
