@@ -18,34 +18,38 @@
         <div class="min-h-screen bg-gray-100 dark:bg-gray-700">
             @include('layouts.navigation')
 
-            <nav class="bg-gray-800 w-full">
-                <div class="container mx-1 px-10">
-                    <div class="flex items-center justify-between h-16">
-                        <div class="flex items-center">
-                            <a href="#" class="text-white text-2xl font-bold">Stonks Pizza's</a>
-                        </div>
-                        <div class="flex items-center">
-                            <a href="#" class="text-gray-300 hover:text-white px-3 py-2">Home</a>
-                            <a href="#" class="text-gray-300 hover:text-white px-3 py-2">Menu</a>
-                            <a href="#" class="text-gray-300 hover:text-white px-3 py-2">About</a>
-                            <a href="#" class="text-gray-300 hover:text-white px-3 py-2">Contact</a>
 
-                            @auth
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="text-sm text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200">Logout</button>
-                                </form>
-                            @else
-                                <a href="{{ route('login') }}" class="text-sm text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200">Login</a>
-                                <span class="text-gray-500 mx-1">/</span>
-                                <a href="{{ route('register') }}" class="text-sm text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200">Register</a>
-                            @endauth
-                        </div>
+            <nav class="bg-gray-800 w-full">
+            <div class="container mx-1 px-10">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="#" class="text-white text-2xl font-bold">Stonks Pizza's</a>
+                    </div>
+                    <div class="flex items-center">
+                    <a href="#" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Home</a>
+                        <a href="#" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Menu</a>
+                        <a href="#" class="text-white hover:text-gray-300 px-4 py-2 text-lg">About</a>
+                        <a href="#" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Contact</a>
+                        @auth
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="text-lg text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200">Logout</button>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="text-lg text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200">Login</a>
+                            <span class="text-gray-500 mx-1">/</span>
+                            <a href="{{ route('register') }}" class="text-lg text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200">Register</a>
+                        @endauth
+                      
                     </div>
                 </div>
-            </nav>
+            </div>
+        </nav>
+       
 
-            @yield('content')
+        @yield('content')
+            <!-- Page Content -->
+
         </div>
     </body>
 </html>
