@@ -8,42 +8,44 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Styles -->
-        @livewireStyles
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-       
-
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <script src="{{ asset('js/app.js') }}" defer></script>
-
-
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <x-jet-banner />
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-700">
+            @include('layouts.navigation')
 
-        <div class="">
-            @livewire('navigation-menu')
+            <nav class="bg-gray-800 w-full">
+                <div class="container mx-1 px-10">
+                    <div class="flex items-center justify-between h-16">
+                        <div class="flex items-center">
+                            <a href="#" class="text-white text-2xl font-bold">Stonks Pizza's</a>
+                        </div>
+                        <div class="flex items-center">
+                            <a href="#" class="text-gray-300 hover:text-white px-3 py-2">Home</a>
+                            <a href="#" class="text-gray-300 hover:text-white px-3 py-2">Menu</a>
+                            <a href="#" class="text-gray-300 hover:text-white px-3 py-2">About</a>
+                            <a href="#" class="text-gray-300 hover:text-white px-3 py-2">Contact</a>
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+                            @auth
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="text-sm text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200">Logout</button>
+                                </form>
+                            @else
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200">Login</a>
+                                <span class="text-gray-500 mx-1">/</span>
+                                <a href="{{ route('register') }}" class="text-sm text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200">Register</a>
+                            @endauth
+                        </div>
                     </div>
-                </header>
-            @endif
+                </div>
+            </nav>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            @yield('content')
         </div>
-
-        @stack('modals')
-
-        @livewireScripts
     </body>
 </html>
