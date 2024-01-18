@@ -35,7 +35,9 @@
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
+    <div>
+        
+    </div>
     <!-- Pizza-themed form -->
     <div class="pizza-form">
         <div class="pizza-title">{{ __('🍕 Welcome to Stonks Pizza\'s ') }}</div>
