@@ -29,7 +29,7 @@
                     <a href="index" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Home</a>
                         <a href="menu" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Menu</a>
                         <a href="#" class="text-white hover:text-gray-300 px-4 py-2 text-lg">About</a>
-                        <a href="#" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Contact</a>
+                        <a href="/contact" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Contact</a>
                         @auth
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
