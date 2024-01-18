@@ -8,7 +8,7 @@
 
         .pizza-form {
             background-color: #fff;
-            padding: 10px;
+            padding: 3px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -82,6 +82,4 @@
         </form>
     </div>
     </div>
-    <!-- Pizza-themed form -->
-    
 </x-guest-layout>
