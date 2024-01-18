@@ -3,11 +3,11 @@
     <style>
         body {
             background-color: #fff;
+            overflow: hidden;
         }
 
         .pizza-form {
             background-color: #fff;
-            border-radius: 10px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -24,7 +24,6 @@
             color: #fff; 
             background-color: #333;
             border: 1px solid #fff; 
-            border-radius: 5px;
             padding: 8px;
         }
 
@@ -35,11 +34,9 @@
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-    <div>
-        
-    </div>
-    <!-- Pizza-themed form -->
-    <div class="pizza-form">
+    <div></div>
+    <div class="absolute w-screen h-screen z-10 top-0">
+    <div class="pizza-form h-screen w-screen left-0">
         <div class="pizza-title">{{ __('🍕 Welcome to Stonks Pizza\'s ') }}</div>
 
         <form method="POST" action="{{ route('login') }}">
@@ -84,4 +81,7 @@
             </div>
         </form>
     </div>
+    </div>
+    <!-- Pizza-themed form -->
+    
 </x-guest-layout>
