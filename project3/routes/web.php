@@ -15,6 +15,11 @@ Route::get('/index', function () {
 })->name('index');
 
 
+Route::get('/menu', function () {
+    return view('menu');
+})->name('menu');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

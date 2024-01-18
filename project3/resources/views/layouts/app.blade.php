@@ -26,8 +26,8 @@
                         <a href="#" class="text-white text-2xl font-bold">Stonks Pizza's</a>
                     </div>
                     <div class="flex items-center">
-                    <a href="#" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Home</a>
-                        <a href="#" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Menu</a>
+                    <a href="index" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Home</a>
+                        <a href="menu" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Menu</a>
                         <a href="#" class="text-white hover:text-gray-300 px-4 py-2 text-lg">About</a>
                         <a href="#" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Contact</a>
                         @auth
