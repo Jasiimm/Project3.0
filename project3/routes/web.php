@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StonksController;
 
 
 Route::get('/', function () {
@@ -13,10 +14,7 @@ Route::get('/contact', function () {
 })->name('contact');
 
 
-Route::get('/index', function () {
-    return view('index');
-})->name('index');
-
+Route::get('/index', [StonksController::class, 'index'])->name('index');
 
 Route::get('/about', function () {
     return view('about');
