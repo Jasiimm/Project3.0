@@ -1,55 +1,27 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@yield('title')</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+    crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/739f8fc4c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ URL::to('src\css/app.css') }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased overflow-hidden">
-        <div class="min-h-screen bg-zinc-100">
-            @include('layouts.navigation')
-
-
-            <nav class="bg-gray-800 w-full">
-            <div class="container mx-1 px-10">
-                <div class="flex items-center justify-between h-16">
-                    <div class="flex items-center">
-                        <a href="#" class="text-white text-2xl font-bold">Stonks Pizza's</a>
-                    </div>
-                    <div class="flex items-center">
-                    <a href="index" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Home</a>
-                        <a href="menu" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Menu</a>
-                        <a href="about" class="text-white hover:text-gray-300 px-4 py-2 text-lg">About</a>
-                        <a href="/contact" class="text-white hover:text-gray-300 px-4 py-2 text-lg">Contact</a>
-                        @auth
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="text-lg text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200">Logout</button>
-                            </form>
-                        @else
-                            <a href="{{ route('login') }}" class="text-lg text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200">Login</a>
-                            <span class="text-gray-500 mx-1">/</span>
-                            <a href="{{ route('register') }}" class="text-lg text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-gray-200">Register</a>
-                        @endauth
-                      
-                    </div>
-                </div>
+    @yield('styles')
+</head>
+        <body>
+            @include('partials.header')
+            <div class="container">
+                @yield('content')
             </div>
-        </nav>
-       
 
-        @yield('content')
-            <!-- Page Content -->
-
-        </div>
-    </body>
+            <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+            @yield('scripts')
+     </body>
 </html>

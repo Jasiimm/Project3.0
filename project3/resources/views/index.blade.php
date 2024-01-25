@@ -1,21 +1,25 @@
 @extends('layouts.app')
 
+@section('title')
+    Stonk's Pizza
+@endsection
+
 @section('content')
-<div class="row">
-    @foreach($stonk as $stonk)
-        <div class="col-md-3 col-6 mb-4">
-            <div class="card">
-                <img src="{{ asset('images') }}/{{ $stonk->image }}" class="card-img-top"/>
-                <div class="card-body">
-                    <h4 class="card-title">{{ $stonk->name }}</h4>
-                    <p>{{ $stonk->description }}</p>
-                    <p class="card-text"><strong>Price: </strong> ${{ $stonk->price }}</p>
-                    <p class="btn-holder">
-                        <a href="{{ route('addBook.to.cart', $stonk->id) }}" class="btn btn-outline-danger">Add to cart</a>
-                    </p>
+    @foreach($products->chunk(4) as $productChunk)
+        <div class="row" style="margin-top: 50px;">
+            @foreach($productChunk as $product)
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ $product->imagePath }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $product->title }}</h5>
+                            <p class="card-text">{{ $product->description }}</p>
+                            <div class="pull-right price" style="font-weight: Bold; margin-bottom: 10px;">€{{ $product->price }}</div>
+                            <a href="#" class="btn btn-success">Bestel Nu!</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     @endforeach
-</div>
 @endsection

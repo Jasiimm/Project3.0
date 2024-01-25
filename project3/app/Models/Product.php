@@ -5,14 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Stonk extends Model
+class Product extends Model
 {
     use HasFactory;
 
+    
     protected $fillable = [
-        'name',
-        'description',
-        'image',
-        'price',
+        "imagePath", 
+        "title", 
+        "description", 
+        "price"
     ];
+
 }

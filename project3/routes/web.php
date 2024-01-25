@@ -2,19 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StonksController;
+use App\Http\Controllers\ProductController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductController::class, 'getIndex'])->name('index');
 
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-
-Route::get('/index', [StonksController::class, 'index'])->name('index');
 
 Route::get('/about', function () {
     return view('about');
