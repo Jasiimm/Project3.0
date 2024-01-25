@@ -40,5 +40,33 @@ class StonksTableSeeder extends Seeder
             'description' => 'Tomatensaus, Vegan Kaas, Champignons, Paprika, Spinazie',
             'price' => 15.00,
         ]);
+
+        Product::create([
+            'imagePath' => 'https://www.dominos.nl/ManagedAssets/NL/product/PTON/NL_PTON_all_hero_7544.jpg?v1659828722',
+            'title' => 'Pizza Tonno',
+            'description' => 'Tomatensaus, tonijn, ui & extra mozzarella',
+            'price' => 20.00,
+        ]);
+
+        Product::create([
+            'imagePath' => 'https://www.dominos.nl/ManagedAssets/NL/product/PKEB/NL_PKEB_all_hero_9068.jpg?v348136352',
+            'title' => 'Pizza Chicken kebab',
+            'description' => 'Tomatensaus, mozzarella, kip kebab, ui & knoflooksaus.',
+            'price' => 25.00,
+        ]);
+
+        Product::create([
+            'imagePath' => 'https://www.dominos.nl/ManagedAssets/NL/product/PAME/NL_PAME_all_hero_7544.jpg?v979234471',
+            'title' => 'Pizza Americana',
+            'description' => 'Tomatensaus, mozzarella, ham, pepperoni & rundergehakt.',
+            'price' => 25.00,
+        ]);
+
+        Product::create([
+            'imagePath' => 'https://www.dominos.nl/ManagedAssets/NL/product/PHAW/NL_PHAW_all_hero_9068.jpg?v-619998184',
+            'title' => 'Pizza Hawaï',
+            'description' => 'Tomatensaus, ham, ananas & extra mozzarella.',
+            'price' => 10.00,
+        ]);
     }
 }

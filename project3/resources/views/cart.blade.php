@@ -3,7 +3,7 @@
 @section('title', 'Shopping Cart')
 
 @section('content')
-    <h2>Shopping Cart</h2>
+    <h2>Winkelmandje</h2>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -14,33 +14,46 @@
             <thead>
                 <tr>
                     <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Total</th>
-                    <th>Action</th>
+                    <th>Hoeveelheid</th>
+                    <th>Prijs</th>
+                    <th>Totaal</th>
+                    <th>Actie</th>
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $totalPrice = 0;
+                @endphp
+
                 @foreach($cart as $id => $item)
+                    @php
+                        $subtotal = $item['quantity'] * $item['price'];
+                        $totalPrice += $subtotal;
+                    @endphp
+
                     <tr>
                         <td>{{ $item['name'] }}</td>
                         <td>{{ $item['quantity'] }}</td>
                         <td>€{{ $item['price'] }}</td>
-                        <td>€{{ $item['quantity'] * $item['price'] }}</td>
+                        <td>€{{ $subtotal }}</td>
                         <td>
-                            <a href="{{ route('remove.from.cart', $id) }}" class="btn btn-danger">Remove</a>
+                            <a href="{{ route('remove.from.cart', $id) }}" class="btn btn-danger">Verwijder</a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
 
-        <form action="{{ route('update.cart') }}" method="post">
+        <div class="total-price">
+            <strong>Totaal Prijs:</strong> €{{ $totalPrice }}
+        </div>
+
+        <form action="{{ route('purchase.now') }}" method="post">
             @csrf
-            <button type="submit" class="btn btn-primary">Update Cart</button>
+            <button type="submit" class="btn btn-success">Bestel nu!</button>
         </form>
 
     @else
-        <p>Your cart is empty.</p>
+        <p>Je winkelmandje is leeg,</p>
     @endif
 @endsection

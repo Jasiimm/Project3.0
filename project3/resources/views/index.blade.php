@@ -8,7 +8,7 @@
     @endif
 
     @foreach($products->chunk(4) as $productChunk)
-        <div class="row" style="margin-top: 50px;">
+        <div class="row" style="margin-bottom: 50px; margin-top: 50px;">
             @foreach($productChunk as $product)
                 <div class="col-md-3">
                     <div class="card" style="width: 18rem;">
@@ -19,7 +19,7 @@
                             <div class="pull-right price" style="font-weight: Bold; margin-bottom: 10px;">€{{ $product->price }}</div>
                             <form action="{{ route('add.to.cart', $product->id) }}" method="GET">
                                 @csrf
-                                <button type="submit" class="btn btn-outline-danger">Add to Cart</button>
+                                <button type="submit" class="btn btn-outline-danger">Toevoegen Aan Winkelmand</button>
                             </form>
                         </div>
                     </div>

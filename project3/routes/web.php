@@ -21,6 +21,8 @@ Route::get('/cart', [ProductController::class, 'showCart'])->name('cart.show');
 Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
 Route::get('/update-cart', [ProductController::class, 'updateCart'])->name('update.cart');
 Route::get('/remove-from-cart/{id}', [ProductController::class, 'removeFromCart'])->name('remove.from.cart');
+Route::post('/purchase-now', [ProductController::class, 'purchaseNow'])->name('purchase.now');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
