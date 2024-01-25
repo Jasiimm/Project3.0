@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
 
-Route::get('/', [ProductController::class, 'getIndex'])->name('index');
+Route::get('/index', [ProductController::class, 'getIndex'])->name('index');
 
 Route::get('/contact', function () {
     return view('contact');

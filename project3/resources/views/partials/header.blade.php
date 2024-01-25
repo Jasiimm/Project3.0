@@ -14,20 +14,25 @@
         <li class="nav-item">
           <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Shopping Cart</a>
         </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-user"></i> User Account
           </a>
           <ul class="dropdown-menu">
-            @auth
-              
-              <li><a class="dropdown-item" href="#">Logout</a></li>
-            @else
-          
-              <li><a class="dropdown-item" href="#">Registreer</a></li>
-              <li><a class="dropdown-item" href="#">Login</a></li>
-            @endauth
-          </ul>
+          @auth
+              <li>
+                  <form method="POST" action="{{ route('logout') }}">
+                      @csrf 
+                      <button type="submit" class="dropdown-item">Logout</button>
+                  </form>
+              </li>
+          @else
+              <li><a class="dropdown-item" href="{{ route('register') }}">Registreer</a></li>
+              <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+          @endauth
+      </ul>
+
         </li>
       </ul>
     </div>
