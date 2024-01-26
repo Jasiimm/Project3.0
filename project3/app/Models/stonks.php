@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class stonks extends Model
 {
     use HasFactory;
 
-    
     protected $fillable = [
         "imagePath", 
         "title", 
@@ -18,7 +17,6 @@ class Product extends Model
         "price_medium",
         "price_large"
     ];
-
     const SIZE_FACTORS = [
         'small' => 0.8,
         'medium' => 1,

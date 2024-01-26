@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\stonks;
+use App\Models\Order;
 use Session;
 use Illuminate\Support\Facades\Auth;
+
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = stonks::all();
         return view('index', [
             'products' => $products
         ]);
@@ -23,24 +26,35 @@ class ProductController extends Controller
         return view('cart', compact('cart'));
     }
 
-    public function addToCart($id)
+    public function addToCart($id, Request $request)
+{
+    $product = stonks::findOrFail($id);
+    $cart = session()->get('cart', []);
+    $size = $request->input('size'); 
+
+    if (isset($cart[$id])) {
+        $cart[$id]['quantity']++;
+    } else {
+        $cart[$id] = [
+            "name" => $product->title,
+            "quantity" => 1,
+            "price" => $product->getPriceBySize($size),
+            "image" => $product->imagePath,
+            "size" => $size,
+            "price_small" => $product->price_small,
+            "price_medium" => $product->price_medium,
+            "price_large" => $product->price_large,
+        ];
+        
+    }
+    session()->put('cart', $cart);
+    return redirect()->route('products.index')->with('success', 'Product toegevoegd aan winkelmandje.');
+}
+
+    private function getPriceBySize($product, $size)
     {
-        $product = Product::findOrFail($id);
-        $cart = session()->get('cart', []);
+        $finalPrice = stonks::SIZE_FACTORS[$size] * $product->price;
 
-        if (isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                "name" => $product->title,
-                "quantity" => 1,
-                "price" => $product->price,
-                "image" => $product->imagePath
-            ];
-        }
-
-        session()->put('cart', $cart);
-        return redirect()->route('products.index')->with('success', 'Product toegevoegd aan winkelmandje.');
     }
 
     public function updateCart(Request $request)
@@ -69,14 +83,16 @@ class ProductController extends Controller
         return redirect()->route('cart.show')->with('success', 'Product was succesvol verwijderd.');
     }
 
-    public function purchaseNow()
+    public function status()
     {
-    
-        if (!Auth::check()) {
-            return redirect()->route('login')->with('error', 'Login voordat je kan bestellen');
-        }
+        $user = auth()->user();
+        $cart = session()->get('cart', []);
+        $order = Order::create([
+            'user_id' => $user->id,
+            'status' => 'In Process',
+        ]);
 
-        Session::forget('cart'); 
-        return redirect()->route('products.index')->with('success', 'Bestelling succesvol geplaatst.');
+        session()->forget('cart');
+        return view('status', compact('order'));
     }
 }

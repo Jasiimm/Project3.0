@@ -34,7 +34,13 @@
                     <tr>
                         <td>{{ $item['name'] }}</td>
                         <td>{{ $item['quantity'] }}</td>
-                        <td>€{{ $item['price'] }}</td>
+                        <td>
+                            @if(isset($item['size']))
+                                €{{ $item['price'] }} ({{ ucfirst($item['size']) }})
+                            @else
+                                €{{ $item['price'] }}
+                            @endif
+                        </td>
                         <td>€{{ $subtotal }}</td>
                         <td>
                             <a href="{{ route('remove.from.cart', $id) }}" class="btn btn-danger">Verwijder</a>
@@ -45,10 +51,10 @@
         </table>
 
         <div class="total-price">
-            <strong>Totaal Prijs:</strong> €{{ $totalPrice }}
+            <strong>Totaal Prijs:</strong> €{{ number_format($totalPrice, 2) }}
         </div>
 
-        <form action="{{ route('purchase.now') }}" method="post">
+        <form action="{{ route('status') }}" method="post">
             @csrf
             <button type="submit" class="btn btn-success">Bestel nu!</button>
         </form>
