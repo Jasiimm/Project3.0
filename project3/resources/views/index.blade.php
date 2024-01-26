@@ -21,7 +21,7 @@
                                 {{-- Add a combo box for selecting pizza size --}}
                                 <select name="size" id="size">
                                     <option value="small">Small - €{{ $product->getPriceBySize('small') }}</option>
-                                    <option value="medium">Medium - {{$product->getPriceBySize('medium') }}</option>
+                                    <option value="medium">Medium - €{{$product->getPriceBySize('medium') }}</option>
                                     <option value="large">Large - €{{ $product->getPriceBySize('large') }}</option>
                                 </select>
                             </div>
