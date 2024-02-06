@@ -51,6 +51,17 @@ class ProductController extends Controller
     return redirect()->route('products.index')->with('success', 'Product toegevoegd aan winkelmandje.');
 }
 
+    private function calPrice($size)
+    {
+        $finalPrice = array();
+
+        $finalPrice['price_small'] = $size * 0.8;
+        $finalPrice['price_medium'] = $size * 1;
+        $finalPrice['price_large'] = $size * 1.2;
+
+    return $finalPrice;
+    }
+
     private function getPriceBySize($product, $size)
     {
         $finalPrice = stonks::SIZE_FACTORS[$size] * $product->price;

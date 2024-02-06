@@ -18,9 +18,7 @@ return new class extends Migration
             $table->string("imagePath");
             $table->string("title");
             $table->text("description");
-            $table->float("price_small", 8, 2);	
-            $table->float("price_medium", 8, 2);
-            $table->float("price_large", 8, 2);
+            $table->float("price_index", 8, 2);
             $table->timestamps();
         });
     }
